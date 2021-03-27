@@ -1,0 +1,34 @@
+.movierow {
+    margin-bottom: 2rem;
+}
+
+.movierow h2 {
+    margin: 0 0 0 2rem;
+}
+
+/* Area que define as caracteriscas da lista de filmes */
+.movierow--listarea {
+    overflow-x: hidden;
+    padding-left: 2rem;
+}
+
+.movierow--list {
+    width: 99999px;
+}
+
+.movierow--item {
+    cursor: pointer;
+    display: inline-block;
+    width: 150px;
+}
+
+.movierow--item img {
+    width: 100%;
+    transform: scale(0.9);
+    transition: all ease 0.2s;
+}
+
+/* Cria efeito de zoom na imagem quando passamos o mouse por cima */
+.movierow--item img:hover {
+    transform: scale(1);
+}
