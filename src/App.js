@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import MoviesDB from './MoviesDB';
+import MovieRow from './components/MovieRow'
 
 /**
  * TO-DO:
  * 1. Buscar entender o uso das funcoes useEffect e useState do react
- * @returns 
+ *  
  */
 function App() {
 
-  const [movieList, setMovieList] = useState();
+  const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
     //Pegando toda a lista dos filmes
@@ -18,12 +19,18 @@ function App() {
       setMovieList(list);
     }
 
-    loadAll()
-  }, []);
-  
+    loadAll();
+  }, [])
+
   return (
     <div className="page">
-      
+      <section className="lista">
+        {
+          movieList.map((item, key) => (
+              <MovieRow key={key} title={item.title} itens={item.itens}></MovieRow>
+          ))
+        }
+      </section>
     </div>
   );
 }

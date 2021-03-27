@@ -6,13 +6,10 @@ import { API_KEY } from './env';
 const BaseUrl = "https://api.themoviedb.org/3";
 
 const basicFecth = async (endpoint) => {
-    const req = await fetch(`${BaseUrl}${endpoint}`);
-    const json = await req.json()
-
-    return json
+    return (await fetch(`${BaseUrl}${endpoint}`)).json();
 }
 
-export default {
+const MoviesDB = {
     getHomeList: async () => {
         return [
             {
@@ -59,3 +56,5 @@ export default {
         ];
     }
 }
+
+export default MoviesDB;
