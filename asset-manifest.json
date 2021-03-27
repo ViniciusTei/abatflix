@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/abatflix/static/css/main.2a694ed5.chunk.css",
+    "main.js": "/abatflix/static/js/main.fb765adc.chunk.js",
+    "main.js.map": "/abatflix/static/js/main.fb765adc.chunk.js.map",
+    "runtime-main.js": "/abatflix/static/js/runtime-main.59351283.js",
+    "runtime-main.js.map": "/abatflix/static/js/runtime-main.59351283.js.map",
+    "static/js/2.78f4951f.chunk.js": "/abatflix/static/js/2.78f4951f.chunk.js",
+    "static/js/2.78f4951f.chunk.js.map": "/abatflix/static/js/2.78f4951f.chunk.js.map",
+    "index.html": "/abatflix/index.html",
+    "static/css/main.2a694ed5.chunk.css.map": "/abatflix/static/css/main.2a694ed5.chunk.css.map",
+    "static/js/2.78f4951f.chunk.js.LICENSE.txt": "/abatflix/static/js/2.78f4951f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.59351283.js",
+    "static/js/2.78f4951f.chunk.js",
+    "static/css/main.2a694ed5.chunk.css",
+    "static/js/main.fb765adc.chunk.js"
+  ]
+}
