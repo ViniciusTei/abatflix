@@ -23,12 +23,12 @@ export default function FeaturedMovie({item}) {
                     <div className="featured--info">
                         <div className="featured--info-item featured--info--green">{item.vote_average} pontos</div>
                         <div className="featured--info-item">{firtDate.getFullYear()}</div>
-                        <div className="featured--info-item">{item.number_of_seasons} temporada{item.number_of_seasons != 1 ? 's' : ''}</div>
+                        <div className="featured--info-item">{item.number_of_seasons} temporada{item.number_of_seasons !== 1 ? 's' : ''}</div>
                     </div>
                     <div className="featured--description">{item.overview}</div>
                     <div className="featured--buttons">
-                        <a href="" className="featured--button--light">► Assistir</a>
-                        <a href="" className="featured--button--dark">+ Minha Lista</a>
+                        <button className="featured--button--light">► Assistir</button>
+                        <button className="featured--button--dark">+ Minha Lista</button>
                     </div>
                     <div className="featured--gender">
                         <strong>Generos: </strong>
