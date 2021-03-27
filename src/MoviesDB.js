@@ -1,7 +1,7 @@
 /**
  * This file holds the connection with the API
  */
-const API_KEY = process.env.TMDB_KEY;
+import { API_KEY } from './env';
 
 const BaseUrl = "https://api.themoviedb.org/3";
 
