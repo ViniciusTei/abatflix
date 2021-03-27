@@ -7,7 +7,8 @@ import FeaturedMovie from './components/FeaturedMovie';
 /**
  * TO-DO:
  * 1. Buscar entender o uso das funcoes useEffect e useState do react
- *  
+ * 2. Mudar codigo para Typescript **IMPORTANTE!!!**
+ * 3. Adicinar Sytled-components 
  */
 function App() {
 
