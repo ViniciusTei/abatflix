@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import MoviesDB from './MoviesDB';
 
+/**
+ * TO-DO:
+ * 1. Buscar entender o uso das funcoes useEffect e useState do react
+ * @returns 
+ */
 function App() {
+
+  const [movieList, setMovieList] = useState();
+
+  useEffect(() => {
+    //Pegando toda a lista dos filmes
+    const loadAll = async () => {
+      let list = await MoviesDB.getHomeList()
+      setMovieList(list);
+    }
+
+    loadAll()
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page">
+      
     </div>
   );
 }
