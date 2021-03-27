@@ -12,10 +12,6 @@
     padding-left: 2rem;
 }
 
-.movierow--list {
-    width: 99999px;
-}
-
 .movierow--item {
     cursor: pointer;
     display: inline-block;
@@ -31,4 +27,31 @@
 /* Cria efeito de zoom na imagem quando passamos o mouse por cima */
 .movierow--item img:hover {
     transform: scale(1);
+}
+
+.movierow--buttons {
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition: all ease .5s;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.movierow:hover .movierow--buttons{
+    opacity: 1;
 }
