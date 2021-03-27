@@ -17,6 +17,7 @@
     flex-direction: column;
     justify-content: center;
     padding-left: 2rem;
+    padding-bottom: 250px;
 }
 
 .featured--name {

@@ -3,6 +3,7 @@ import './App.css';
 import MoviesDB from './MoviesDB';
 import MovieRow from './components/MovieRow';
 import FeaturedMovie from './components/FeaturedMovie';
+import Header from './components/Header';
 
 /**
  * TO-DO:
@@ -14,6 +15,7 @@ function App() {
 
   const [movieList, setMovieList] = useState([]);
   const [featureData, setFeatureData] = useState(null);
+  const [blackHeader, setBlackHeader] = useState(false);
   
   useEffect(() => {
     //Pegando toda a lista dos filmes
@@ -33,8 +35,25 @@ function App() {
     loadAll();
   }, [])
 
+  useEffect(() => {
+    const scrollListener = () => {
+      if(window.scrollY > 10) {
+        setBlackHeader(true)
+      } else {
+        setBlackHeader(false)
+      }
+    }
+
+    window.addEventListener('scroll', scrollListener)
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+  }, [])
+
   return (
     <div className="page">
+      <Header black={blackHeader}></Header>
       {featureData && <FeaturedMovie item={featureData}/>}
       <section className="lista">
         {
@@ -44,6 +63,10 @@ function App() {
           ))
         }
       </section>
+
+      <footer>
+        Feito com <span role="img" aria-label="coracao">❤</span> por VINICIUSTI
+      </footer>
     </div>
   );
 }
