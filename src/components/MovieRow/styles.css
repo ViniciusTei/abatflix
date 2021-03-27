@@ -55,3 +55,9 @@
 .movierow:hover .movierow--buttons{
     opacity: 1;
 }
+
+@media (max-width: 760px) {
+    .movierow--buttons{
+        opacity: 1;
+    }
+}
