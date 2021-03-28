@@ -31,7 +31,7 @@ export default function FeaturedMovie({item}) {
                         <button className="featured--button--dark">+ Minha Lista</button>
                     </div>
                     <div className="featured--gender">
-                        <strong>Generos: </strong>
+                        <strong>Gêneros: </strong>
                         {
                             genres.join(', ')
                         }
