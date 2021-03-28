@@ -2,6 +2,7 @@
  * This file holds the connection with the API
  */
 import { API_KEY } from './env';
+//const API_KEY = process.env.API_KEY
 
 const BaseUrl = "https://api.themoviedb.org/3";
 

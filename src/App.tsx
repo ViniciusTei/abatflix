@@ -1,10 +1,13 @@
-import * as React from 'react';
-import { useState, useEffect} from 'react';
-import './App.css';
+import React from 'react';
+
+import GlobalStyle from './styles/global';
+import { Footer, Lista, Loading } from './styles/App';
+
+import { Header } from './components/Header';
+import { FeaturedMovie } from './components/FeaturedMovie';
+import { MovieRow } from './components/MovieRow';
+
 import MoviesDB from './MoviesDB';
-import { MovieRow } from './components/MovieRow/index';
-import {FeaturedMovie} from './components/FeaturedMovie/index';
-import {Header} from './components/Header/index';
 
 /**
  * TO-DO:
@@ -13,12 +16,11 @@ import {Header} from './components/Header/index';
  * 3. Adicinar Sytled-components 
  */
 function App() {
-
-  const [movieList, setMovieList] = useState<any[]>([]);
-  const [featureData, setFeatureData] = useState({});
-  const [blackHeader, setBlackHeader] = useState(false);
+  const [movieList, setMovieList] = React.useState<any[]>([]);
+  const [featureData, setFeatureData] = React.useState({});
+  const [blackHeader, setBlackHeader] = React.useState(false);
   
-  useEffect(() => {
+  React.useEffect(() => {
     //Pegando toda a lista dos filmes
     const loadAll = async () => {
       let list = await MoviesDB.getHomeList()
@@ -36,7 +38,7 @@ function App() {
     loadAll();
   }, [])
 
-  useEffect(() => {
+  React.useEffect(() => {
     const scrollListener = () => {
       if(window.scrollY > 10) {
         setBlackHeader(true)
@@ -51,29 +53,29 @@ function App() {
       window.removeEventListener('scroll', scrollListener)
     }
   }, [])
-
   return (
     <div className="page">
-      <Header black={blackHeader}></Header>
-      {featureData && <FeaturedMovie item={featureData}/>}
-      <section className="lista">
-        {
-          //importante lembrar de passar a key quando criar loops
-          movieList.map((item, key) => (
-              <MovieRow key={key} title={item.title} itens={item.itens}></MovieRow>
-          ))
+        <Header black={blackHeader}></Header>
+        {featureData && <FeaturedMovie item={featureData}/>}
+        <Lista>
+            {
+            //importante lembrar de passar a key quando criar loops
+            movieList.map((item, key) => (
+                <MovieRow key={key} title={item.title} itens={item.itens}></MovieRow>
+            ))
+            }
+        </Lista>
+
+        <Footer>
+            Feito com <span role="img" aria-label="coracao">❤</span> por VINICIUSTI
+        </Footer>
+
+        {movieList.length <= 0 &&
+        <Loading>
+            <img src="https://cdn.lowgif.com/small/0534e2a412eeb281-the-counterintuitive-tech-behind-netflix-s-worldwide.gif" alt="loading"></img>
+        </Loading>
         }
-      </section>
-
-      <footer>
-        Feito com <span role="img" aria-label="coracao">❤</span> por VINICIUSTI
-      </footer>
-
-      {movieList.length <= 0 &&
-      <div className="loading">
-        <img src="https://cdn.lowgif.com/small/0534e2a412eeb281-the-counterintuitive-tech-behind-netflix-s-worldwide.gif" alt="loading"></img>
-      </div>
-      }
+      <GlobalStyle/>
     </div>
   );
 }

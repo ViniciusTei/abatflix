@@ -1,4 +1,10 @@
-header {
+import styled from 'styled-components';
+
+interface HeaderProps {
+    black: boolean;
+}
+
+export const HeaderWrapper = styled.header<HeaderProps>`
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -11,19 +17,16 @@ header {
     padding: 0 2rem;
     background: transparent;
     transition: all ease 0.3s;
-    
-}
 
-.black {
-    background-color: #141414;
-}
+    background-color: ${(props) => props.black ? '#141414' : ''};
+`
 
-.header--logo svg{
+export const Logo = styled.div`
     cursor: pointer;
     height: 30px;
-}
+`
 
-.header--user img{
+export const UserImg = styled.img`
     cursor: pointer;
     height: 35px;
-}
+`
