@@ -30,3 +30,13 @@ export const UserImg = styled.img`
     cursor: pointer;
     height: 35px;
 `
+
+export const User = styled.div`
+    display: flex;
+    width: 135px;
+    justify-content: space-between;
+    align-items: center;
+    ${'label'} {
+        white-space: pre;
+    }
+`

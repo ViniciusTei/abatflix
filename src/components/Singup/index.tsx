@@ -1,5 +1,6 @@
 import React from 'react';
 import {useAuth} from '../../contexts/AuthContext'
+import { Link } from 'react-router-dom'
 import { Container, Card, Header, Input, Label, InputElement, LoginButton, MiniLabel } from './styles';
 
 const Cadastrar: React.FC = () => {
@@ -59,7 +60,8 @@ const Cadastrar: React.FC = () => {
                 
                 <LoginButton disabled={loading} type="submit">Cadastrar</LoginButton>
             </form>
-            <MiniLabel>Ja possuo uma conta.</MiniLabel>
+            <Link to="/login" style={{textDecoration: 'none'}}><MiniLabel>Ja possuo uma conta.</MiniLabel></Link>
+            
         </Card>
 
         </div>

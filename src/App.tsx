@@ -1,31 +1,39 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
-import { AuthProvider } from './contexts/AuthContext';
+import { Router, Switch, Route, Redirect } from "react-router-dom"
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import GlobalStyle from './styles/global';
   
 import Cadastrar from './components/Singup';
 import Home from './components/Home';
 import Login from './components/Login';
 
+import history from './services/history';
+
 const App: React.FC = () => {
-  
+  const {currentUser} = useAuth()
   return (
     <div>
-      <Router>
+      {/* router-dom ta ouvindo as informaçoes no history qual alteraçao ele pega */}
+      <Router history={history}>
         <AuthProvider>
           <Switch>
-            <Route path="/cadastro" exact component= {Cadastrar} />
-            <Route path="/login" exact component= {Login} />
-            <Route path="/home" exact component= {Home} />
-            <Route path="/" exact render={() => {
+            {/* SUPER IMPORTANT TO HAVE ALL THE ROUTES AND REDIRECTS SET !!! */
+              
+            }
+            <Route exact path="/cadastro" component= {Cadastrar} />
+            <Route exact path="/login" component= {Login} />
+            <Route exact path="/home" component= {Home} />
+            <Route exact path="/" render={() => {
               //is user authenticated?
-              let is = true
+              let is = false
               return is ? <Redirect to="/home"></Redirect> : <Redirect to="/login"></Redirect>
             }} />
+            <Redirect from="*" to="/" />
           </Switch>
         </AuthProvider>
       
         <GlobalStyle/>
+      
       </Router>
     </div>
   );

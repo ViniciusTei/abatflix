@@ -66,8 +66,8 @@ export const LoginButton = styled.button`
     margin-bottom: 5px;
     cursor: pointer;
     &:disabled {
-        background #fff;
         cursor: none;
+        background: #f49ca1;
     }
 `
 export const MiniLabel = styled.label`
@@ -75,4 +75,5 @@ export const MiniLabel = styled.label`
     color: #737373;
     padding: 0.6rem;
     cursor: pointer;
+    text-decoration: none;
 `

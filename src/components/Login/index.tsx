@@ -1,29 +1,30 @@
 import React from 'react';
-
+import { Link, useHistory } from 'react-router-dom'
+import {useAuth} from '../../contexts/AuthContext'
 import { Container, Card, Header, Input, Label, InputElement, LoginButton, MiniLabel } from './styles';
 
 const Login: React.FC = () => {
     const emailRef = React.useRef({} as any)
     const passwordRef = React.useRef({} as any)
-    // const { singup } = useAuth()
+    const { login } = useAuth()
     const [error, setError] = React.useState('')
     const [loading, setLoading] = React.useState(false)
-
+    const history = useHistory()
     async function handleSubmit(ev: any) {
         ev.preventDefault()
 
-        // try {
-        //     setError('')
-        //     setLoading(true)
-        //     console.log(emailRef.current.value, passwordRef.current)
-        //     await singup(emailRef.current.value, passwordRef.current.value)
-        //     setLoading(false)
-        //     setError('Account created!')
-        // } catch (error) {
-        //     console.log(error)
-        //     setError("Failed to create an account")
-        //     setLoading(false)
-        // }
+        try {
+            setError('')
+            setLoading(true)
+            console.log(emailRef.current.value, passwordRef.current)
+            await login(emailRef.current.value, passwordRef.current.value)
+            setLoading(false)
+            history.push("/home")
+        } catch (error) {
+            console.log(error)
+            setError("Nao foi possivel conectar!")
+            setLoading(false)
+        }
     }
   
     return (
@@ -49,7 +50,8 @@ const Login: React.FC = () => {
                 
                 <LoginButton disabled={loading} type="submit">Entrar</LoginButton>
             </form>
-            <MiniLabel>Cadastre-se.</MiniLabel>
+            <Link to="/cadastro" style={{textDecoration: 'none'}}><MiniLabel>Cadastre-se.</MiniLabel></Link>
+            
         </Card>
 
         </div>

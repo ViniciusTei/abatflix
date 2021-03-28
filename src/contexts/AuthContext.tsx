@@ -14,6 +14,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     function singup(email: string, password: string) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
+
+    function login(email: string, password: string) {
+        return auth.signInWithEmailAndPassword(email, password)
+    }
     
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -26,7 +30,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     
     const value: any = {
         currentUser,
-        singup
+        singup,
+        login
     }
 
     return (
