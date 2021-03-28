@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Switch, Route, Redirect } from "react-router-dom"
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import GlobalStyle from './styles/global';
   
 import Cadastrar from './components/Singup';
@@ -12,7 +12,7 @@ import PrivateRoute from './services/PrivateRouter';
 import history from './services/history';
 
 const App: React.FC = () => {
-  const {currentUser} = useAuth()
+
   return (
     <div>
       {/* router-dom ta ouvindo as informaçoes no history qual alteraçao ele pega */}
