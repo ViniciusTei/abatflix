@@ -18,7 +18,19 @@ export const AuthProvider: React.FC = ({ children }) => {
     function login(email: string, password: string) {
         return auth.signInWithEmailAndPassword(email, password)
     }
+
+    function logout() {
+        return auth.signOut()
+    }
     
+    function updateEmail(email: string) {
+        return currentUser.updateEmail(email)
+    }
+    
+    function updatePassword(password: string) {
+        return currentUser.updatePassword(password)
+    }
+
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setCurrentUser(user)
@@ -31,7 +43,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     const value: any = {
         currentUser,
         singup,
-        login
+        login,
+        logout,
+        updateEmail,
+        updatePassword
     }
 
     return (

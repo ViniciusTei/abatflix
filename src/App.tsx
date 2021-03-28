@@ -6,6 +6,8 @@ import GlobalStyle from './styles/global';
 import Cadastrar from './components/Singup';
 import Home from './components/Home';
 import Login from './components/Login';
+import Profile from './components/Profile';
+import PrivateRoute from './services/PrivateRouter';
 
 import history from './services/history';
 
@@ -22,12 +24,9 @@ const App: React.FC = () => {
             }
             <Route exact path="/cadastro" component= {Cadastrar} />
             <Route exact path="/login" component= {Login} />
-            <Route exact path="/home" component= {Home} />
-            <Route exact path="/" render={() => {
-              //is user authenticated?
-              let is = false
-              return is ? <Redirect to="/home"></Redirect> : <Redirect to="/login"></Redirect>
-            }} />
+            <PrivateRoute exact path="/home" component= {Home} />
+            <PrivateRoute exact path="/perfil" component= {Profile} />
+            <PrivateRoute exact path="/" component={Home}/>
             <Redirect from="*" to="/" />
           </Switch>
         </AuthProvider>
