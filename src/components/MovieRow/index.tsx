@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import * as React from 'react';
 import './styles.css';
 import {NavigateBefore, NavigateNext} from '@styled-icons/material'
 
-function MovieRow({title, itens}) {
+export const MovieRow: React.FunctionComponent<{title:string, itens:any}> = ({title, itens}) => {
 
-    const [scrollX, setScrollX]= useState(0);
+    const [scrollX, setScrollX]= React.useState(0);
 
     const handleLeft = () => {
         let x = scrollX + Math.round(window.innerWidth / 2);
@@ -46,7 +46,7 @@ function MovieRow({title, itens}) {
                     }}
                 >
                 {
-                    itens.results.length > 0 && itens.results.map((item, key) => (
+                    itens.results.length > 0 && itens.results.map((item:any, key:number) => (
                         <div key={key} className="movierow--item">
                             <img src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} alt={item.original_title}/>
                         </div>
@@ -60,5 +60,3 @@ function MovieRow({title, itens}) {
         </div>
     )
 }
-
-export default MovieRow

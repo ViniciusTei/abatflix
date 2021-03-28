@@ -1,10 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import './styles.css'
 
-export default function FeaturedMovie({item}) {
-    console.log(item)
+export const FeaturedMovie: React.FunctionComponent<{item: any}> = ({item}) => {
     let firtDate = new Date(item.first_air_date)
-    let genres = [];
+    let genres: any[] = [];
 
     for(let i in item.genres) {
         genres.push(item.genres[i].name)
@@ -31,7 +30,7 @@ export default function FeaturedMovie({item}) {
                         <button className="featured--button--dark">+ Minha Lista</button>
                     </div>
                     <div className="featured--gender">
-                        <strong>Generos: </strong>
+                        <strong>Gêneros: </strong>
                         {
                             genres.join(', ')
                         }

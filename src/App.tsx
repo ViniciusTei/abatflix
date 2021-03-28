@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
+import { useState, useEffect} from 'react';
 import './App.css';
 import MoviesDB from './MoviesDB';
-import MovieRow from './components/MovieRow';
-import FeaturedMovie from './components/FeaturedMovie';
-import Header from './components/Header';
+import { MovieRow } from './components/MovieRow/index';
+import {FeaturedMovie} from './components/FeaturedMovie/index';
+import {Header} from './components/Header/index';
 
 /**
  * TO-DO:
@@ -13,8 +14,8 @@ import Header from './components/Header';
  */
 function App() {
 
-  const [movieList, setMovieList] = useState([]);
-  const [featureData, setFeatureData] = useState(null);
+  const [movieList, setMovieList] = useState<any[]>([]);
+  const [featureData, setFeatureData] = useState({});
   const [blackHeader, setBlackHeader] = useState(false);
   
   useEffect(() => {
