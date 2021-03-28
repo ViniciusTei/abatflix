@@ -13,7 +13,7 @@ export const Featured = styled.section<FeaturedProps>`
     height: 100vh;
     background-size: 'cover';
     backckgroun-position: 'center';
-    background-image: url(https://image.tmdb.org/t/p/original${(props) => props.backdroppath ? props.backdroppath : ''})
+    background-image: url(https://image.tmdb.org/t/p/original/${(props) => props.backdroppath});
 
     @media(max-width: 760px) {
         heigth: 90vh;

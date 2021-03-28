@@ -10,7 +10,7 @@ export const Header = styled.header`
     display: flex;
     align-items: center;
     marging-left: 3rem;
-    padding-left: 50px;
+    padding-left: 2rem;
 `
 export const Card = styled.div`
     min-height: 600px;
@@ -18,6 +18,11 @@ export const Card = styled.div`
     background-color: rgba(0,0,0,.75);
     padding: 60px 68px 40px;
     margin: auto;
+
+    @media(max-width: 600px) {
+        padding: 30px;
+        width: 90%;
+    }
 `
 export const Label = styled.label`
     position: absolute;

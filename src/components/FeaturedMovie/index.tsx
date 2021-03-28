@@ -4,12 +4,12 @@ import {Featured,HorizontalGradient,VerticalGradient,Name,Info,Item,Description,
 export const FeaturedMovie: React.FunctionComponent<{item: any}> = ({item}) => {
     let firtDate = new Date(item.first_air_date)
     let genres: any[] = [];
-
+    console.log(item)
     for(let i in item.genres) {
         genres.push(item.genres[i].name)
     }
     return (
-        <Featured backdroppath={item.backdrop_path}>
+        <Featured backdroppath={item && item.backdrop_path}>
             <VerticalGradient>
                 <HorizontalGradient>
                     <Name>

@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.div`
     height: 100vh;
     padding: 5rem;
+
+    @media (max-width: 600px) {
+        padding: 2rem;
+    }
 `
 
 export const Header = styled.header`
@@ -18,12 +22,17 @@ export const Card = styled.div`
     height: 400px;
     margin: auto auto;
     padding-top: 8rem;
+
+    @media (max-width: 600px) {
+        width: 90%;
+    }
 `
 
 export const Titulo = styled.h1`
     width: 100%;
     color: #fff;
-    font-size: 3.5vw;
+    font-size: 3.5rem;
+    text-align: center;
 `
 export const Label = styled.label`
     position: absolute;
@@ -61,23 +70,19 @@ export const ButtonsContainer = styled.div`
     justify-content: space-around;
 `
 
-export const LogOutButton = styled.a`
-    text-decoration: none;
+export const LogOutButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2em 0 1em 0;
-    font-size: 1.2vw;
+    font-size: .6rem;
     text-transform: uppercase;
-    padding: .5em 1.5em;
-    letter-spacing: 2px;
     cursor: pointer;
     background: #fff;
     color: #000;
     border: 1px solid #fff;
     font-weight: 700;
-    text-align: center;
-
+    width: 30%;
     &:hover {
         background: #e5e5e5;
     }
