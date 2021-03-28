@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/abatflix/static/js/main.f4d3a32f.chunk.js",
-    "main.js.map": "/abatflix/static/js/main.f4d3a32f.chunk.js.map",
+    "main.js": "/abatflix/static/js/main.c2d3dadb.chunk.js",
+    "main.js.map": "/abatflix/static/js/main.c2d3dadb.chunk.js.map",
     "runtime-main.js": "/abatflix/static/js/runtime-main.59351283.js",
     "runtime-main.js.map": "/abatflix/static/js/runtime-main.59351283.js.map",
     "static/js/2.e4eb8baa.chunk.js": "/abatflix/static/js/2.e4eb8baa.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.59351283.js",
     "static/js/2.e4eb8baa.chunk.js",
-    "static/js/main.f4d3a32f.chunk.js"
+    "static/js/main.c2d3dadb.chunk.js"
   ]
 }
