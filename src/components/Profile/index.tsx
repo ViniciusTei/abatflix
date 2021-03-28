@@ -5,7 +5,7 @@ import { Container, Header, Card, Titulo, Label, InputElement, Input, LogOutButt
 import {ArrowBack} from '@styled-icons/material'
 
 const Profile: React.FC = () => {
-    const {currentUser, logout,  updatePassword, updateEmail } = useAuth()
+    const {currentUser, logout } = useAuth()
     const history = useHistory()
 
     async function handleLogOut() {
