@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './styles.css';
 import {NavigateBefore, NavigateNext} from '@styled-icons/material'
+import {Button,ListArea,ListImage,ListItem,Row,RowTitle} from './styles'
 
 export const MovieRow: React.FunctionComponent<{title:string, itens:any}> = ({title, itens}) => {
 
@@ -25,20 +25,20 @@ export const MovieRow: React.FunctionComponent<{title:string, itens:any}> = ({ti
     }
 
     return (
-        <div className="movierow">
-            <h2>{title}</h2>
+        <Row>
+            <RowTitle>{title}</RowTitle>
 
-            <div className="movierow--buttons left" onClick={handleLeft}>
-                <NavigateBefore className="NavigateBefore" size="50" title="Navigate Back"></NavigateBefore>
-            </div>
+            <Button style={{left: 0}} onClick={handleLeft}>
+                <NavigateBefore style={{color: '#fff'}} size="50" title="Navigate Back"></NavigateBefore>
+            </Button>
 
-            <div className="movierow--buttons right" onClick={handleRight}>
-                <NavigateNext className="NavigateNext" size="50" title="Navigate Foward"></NavigateNext>
-            </div>
+            <Button style={{right: 0}} onClick={handleRight}>
+                <NavigateNext  style={{color: '#fff'}} size="50" title="Navigate Foward"></NavigateNext>
+            </Button>
 
-            <div className="movierow--listarea">
+            <ListArea>
 
-                <div className="movierow--list"
+                <div
                     style={{
                         marginLeft :scrollX,
                         width: itens.results.length * 150,
@@ -47,16 +47,16 @@ export const MovieRow: React.FunctionComponent<{title:string, itens:any}> = ({ti
                 >
                 {
                     itens.results.length > 0 && itens.results.map((item:any, key:number) => (
-                        <div key={key} className="movierow--item">
-                            <img src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} alt={item.original_title}/>
-                        </div>
+                        <ListItem key={key}>
+                            <ListImage src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} alt={item.original_title}/>
+                        </ListItem>
                     ))
                 }
                 </div>
                 
-            </div>
+            </ListArea>
 
             
-        </div>
+        </Row>
     )
 }

@@ -1,79 +1,39 @@
-import * as React from 'react';
-import { useState, useEffect} from 'react';
-import './App.css';
-import MoviesDB from './MoviesDB';
-import { MovieRow } from './components/MovieRow/index';
-import {FeaturedMovie} from './components/FeaturedMovie/index';
-import {Header} from './components/Header/index';
-
-/**
- * TO-DO:
- * 1. Buscar entender o uso das funcoes useEffect e useState do react
- * 2. Mudar codigo para Typescript **IMPORTANTE!!!**
- * 3. Adicinar Sytled-components 
- */
-function App() {
-
-  const [movieList, setMovieList] = useState<any[]>([]);
-  const [featureData, setFeatureData] = useState({});
-  const [blackHeader, setBlackHeader] = useState(false);
+import React from 'react';
+import { Router, Switch, Route, Redirect } from "react-router-dom"
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import GlobalStyle from './styles/global';
   
-  useEffect(() => {
-    //Pegando toda a lista dos filmes
-    const loadAll = async () => {
-      let list = await MoviesDB.getHomeList()
-      setMovieList(list);
+import Cadastrar from './components/Singup';
+import Home from './components/Home';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import PrivateRoute from './services/PrivateRouter';
 
-      //pega o filme destaque
-      let originals = list.filter(item  => item.slug === 'originais')
-      let rand = Math.floor(Math.random() * originals[0].itens.results.length)
-      let chosen = originals[0].itens.results[rand]
-      let info = await MoviesDB.getMovieInfo(chosen.id, 'tv')
-      setFeatureData(info)
+import history from './services/history';
 
-    }
-
-    loadAll();
-  }, [])
-
-  useEffect(() => {
-    const scrollListener = () => {
-      if(window.scrollY > 10) {
-        setBlackHeader(true)
-      } else {
-        setBlackHeader(false)
-      }
-    }
-
-    window.addEventListener('scroll', scrollListener)
-
-    return () => {
-      window.removeEventListener('scroll', scrollListener)
-    }
-  }, [])
-
+const App: React.FC = () => {
+  const {currentUser} = useAuth()
   return (
-    <div className="page">
-      <Header black={blackHeader}></Header>
-      {featureData && <FeaturedMovie item={featureData}/>}
-      <section className="lista">
-        {
-          //importante lembrar de passar a key quando criar loops
-          movieList.map((item, key) => (
-              <MovieRow key={key} title={item.title} itens={item.itens}></MovieRow>
-          ))
-        }
-      </section>
-
-      <footer>
-        Feito com <span role="img" aria-label="coracao">❤</span> por VINICIUSTI
-      </footer>
-
-      {movieList.length <= 0 &&
-      <div className="loading">
-        <img src="https://cdn.lowgif.com/small/0534e2a412eeb281-the-counterintuitive-tech-behind-netflix-s-worldwide.gif" alt="loading"></img>
-      </div>
-      }
+    <div>
+      {/* router-dom ta ouvindo as informaçoes no history qual alteraçao ele pega */}
+      <Router history={history}>
+        <AuthProvider>
+          <Switch>
+            {/* SUPER IMPORTANT TO HAVE ALL THE ROUTES AND REDIRECTS SET !!! */
+              
+            }
+            <Route exact path="/cadastro" component= {Cadastrar} />
+            <Route exact path="/login" component= {Login} />
+            <PrivateRoute exact path="/home" component= {Home} />
+            <PrivateRoute exact path="/perfil" component= {Profile} />
+            <PrivateRoute exact path="/" component={Home}/>
+            <Redirect from="*" to="/" />
+          </Switch>
+        </AuthProvider>
+      
+        <GlobalStyle/>
+      
+      </Router>
     </div>
   );
 }

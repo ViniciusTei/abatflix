@@ -1,35 +1,41 @@
-.movierow {
+import styled from 'styled-components'
+
+export const Row = styled.div`
     margin-bottom: 2rem;
-}
+`
 
-.movierow h2 {
+export const RowTitle = styled.h2`
     margin: 0 0 0 2rem;
-}
+`
 
-/* Area que define as caracteriscas da lista de filmes */
-.movierow--listarea {
+export const ListArea = styled.div`
     overflow-x: hidden;
     padding-left: 2rem;
-}
 
-.movierow--item {
+    &:hover Button {
+        opacity: 1;
+    }
+`
+
+export const ListItem = styled.div`
     cursor: pointer;
     display: inline-block;
     width: 150px;
-}
+`
 
-.movierow--item img {
+export const ListImage = styled.img`
     width: 100%;
     transform: scale(0.9);
     transition: all ease 0.2s;
-}
 
-/* Cria efeito de zoom na imagem quando passamos o mouse por cima */
-.movierow--item img:hover {
-    transform: scale(1);
-}
+    &:hover {
+        transform: scale(1);
+    }
 
-.movierow--buttons {
+    
+`
+
+export const Button = styled.button`
     position: absolute;
     width: 40px;
     height: 225px;
@@ -42,22 +48,12 @@
     cursor: pointer;
     opacity: 0;
     transition: all ease .5s;
-}
 
-.left {
-    left: 0;
-}
-
-.right {
-    right: 0;
-}
-
-.movierow:hover .movierow--buttons{
-    opacity: 1;
-}
-
-@media (max-width: 760px) {
-    .movierow--buttons{
+    @media (max-width: 760px) {
         opacity: 1;
     }
-}
+
+    &:hover {
+        opacity: 1;
+    }
+`

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './styles.css'
+import {Featured,HorizontalGradient,VerticalGradient,Name,Info,Item,Description,Button,Gender} from './styles'
 
 export const FeaturedMovie: React.FunctionComponent<{item: any}> = ({item}) => {
     let firtDate = new Date(item.first_air_date)
@@ -9,34 +9,30 @@ export const FeaturedMovie: React.FunctionComponent<{item: any}> = ({item}) => {
         genres.push(item.genres[i].name)
     }
     return (
-        <section className="featured" style={{
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`
-        }}>
-            <div className="featured--vertical">
-                <div className="featured--horizontal">
-                    <div className="featured--name">
+        <Featured backdroppath={item.backdrop_path}>
+            <VerticalGradient>
+                <HorizontalGradient>
+                    <Name>
                         {item.name}
+                    </Name>
+                    <Info>
+                        <Item style={{color: "#46d369"}}>{item.vote_average} pontos</Item>
+                        <Item>{firtDate.getFullYear()}</Item>
+                        <Item>{item.number_of_seasons} temporada{item.number_of_seasons !== 1 ? 's' : ''}</Item>
+                    </Info>
+                    <Description>{item.overview}</Description>
+                    <div style={{marginTop: '1rem'}}>
+                        <Button backgroundcolor={'#fff'} color={'#000'}>► Assistir</Button>
+                        <Button backgroundcolor={'#333'} color={'#fff'}>+ Minha Lista</Button>
                     </div>
-                    <div className="featured--info">
-                        <div className="featured--info-item featured--info--green">{item.vote_average} pontos</div>
-                        <div className="featured--info-item">{firtDate.getFullYear()}</div>
-                        <div className="featured--info-item">{item.number_of_seasons} temporada{item.number_of_seasons !== 1 ? 's' : ''}</div>
-                    </div>
-                    <div className="featured--description">{item.overview}</div>
-                    <div className="featured--buttons">
-                        <button className="featured--button--light">► Assistir</button>
-                        <button className="featured--button--dark">+ Minha Lista</button>
-                    </div>
-                    <div className="featured--gender">
+                    <Gender>
                         <strong>Gêneros: </strong>
                         {
                             genres.join(', ')
                         }
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </Gender>
+                </HorizontalGradient>
+            </VerticalGradient>
+        </Featured>
     )
 }
