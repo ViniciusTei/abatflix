@@ -5,7 +5,7 @@ import { API_KEY } from './env';
 
 const BaseUrl = "https://api.themoviedb.org/3";
 
-const basicFecth = async (endpoint) => {
+const basicFecth = async (endpoint: string) => {
     return (await fetch(`${BaseUrl}${endpoint}`)).json();
 }
 
@@ -56,8 +56,8 @@ const MoviesDB = {
         ];
     },
 
-    getMovieInfo: async (movieId, movieType) => {
-        let info = {};
+    getMovieInfo: async (movieId: number, movieType: string) => {
+        let info: any;
         if(movieId) {
             switch(movieType){
                 case 'movei':
