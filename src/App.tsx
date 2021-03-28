@@ -1,6 +1,5 @@
 import React from 'react';
-import Home from './components/Home';
-import Login from './components/Login';
+import Cadastrar from './components/Singup';
 
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -11,7 +10,7 @@ const App: React.FC = () => {
   return (
     <div>
       <AuthProvider>
-        <Login></Login>
+        <Cadastrar></Cadastrar>
         <GlobalStyle/>
       </AuthProvider>
 

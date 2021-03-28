@@ -50,20 +50,25 @@ export const InputElement = styled.div`
 `
 
 export const LoginButton = styled.button`
-padding: 16px 2em;
-width: 100%;
-min-width: 98px;
-min-height: 37px;
-line-height: 1em;
-border-radius: 4px;
-font-size: 16px;
-font-weight: 600;
-background: #e50914;
-display: inline-block;
-color: #fff;
-border: none;
-margin-top: 1rem;
-margin-bottom: 5px;
+    padding: 16px 2em;
+    width: 100%;
+    min-width: 98px;
+    min-height: 37px;
+    line-height: 1em;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #e50914;
+    display: inline-block;
+    color: #fff;
+    border: none;
+    margin-top: 1rem;
+    margin-bottom: 5px;
+    cursor: pointer;
+    &:disabled {
+        background #fff;
+        cursor: none;
+    }
 `
 export const MiniLabel = styled.label`
     font-size: 0.875rem;

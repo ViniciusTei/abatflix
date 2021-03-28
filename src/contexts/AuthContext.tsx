@@ -9,6 +9,7 @@ export function useAuth() {
 
 export const AuthProvider: React.FC = ({ children }) => {
     const [currentUser, setCurrentUser] = React.useState<any>()
+    const [loading, setLoading] = React.useState(true)
 
     function singup(email: string, password: string) {
         return auth.createUserWithEmailAndPassword(email, password)
@@ -17,6 +18,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setCurrentUser(user)
+            setLoading(false) //not render the app until have the current user
         })
 
         return unsubscribe
@@ -28,6 +30,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{} as any}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={value}>
+            {!loading && children}
+        </AuthContext.Provider>
     )
 }
