@@ -10,3 +10,7 @@ Um clone do Netflix para estudos de ReactJS.
     - [x] Adicionar Tela de login
         - [ ] Adicionar efeito de movimentos no label quando der focus no input
     - [x] Adicioanr tela de cadastro de usuarios
+
+---
+
+Para fazer o login no app use o email `viniteixeirap@hotmail.com` e a senha `123456`
